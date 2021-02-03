@@ -45,6 +45,7 @@ function checkButton(key) {
 for (let index = 0; index < document.querySelectorAll(".drum").length; index++) {
     document.querySelectorAll(".drum")[index].addEventListener("click", function() {
         checkButton(this.innerHTML);
+        buttonAnimation(this.innerHTML);
         // this.style.color="white";
     })
     
@@ -54,4 +55,14 @@ for (let index = 0; index < document.querySelectorAll(".drum").length; index++) 
 document.addEventListener("keydown", function(event) {
     //console.log(event);
     checkButton(event.key);
+    buttonAnimation(event.key);
 })
+
+//Add animation to buttons
+function buttonAnimation(key) {
+    let button = document.querySelector("."+key);
+    button.classList.add("pressed");
+    setTimeout(() => {
+       button.classList.remove("pressed"); 
+    }, 100);
+}
